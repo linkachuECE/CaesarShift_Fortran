@@ -1,0 +1,7 @@
+.vscode
+
+mod/*
+obj/*
+bin/*
+
+!**/.gitkeep
