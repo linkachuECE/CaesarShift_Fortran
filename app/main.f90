@@ -3,17 +3,8 @@ program main
   implicit none
 
   character(:), allocatable :: testStr
-  character(:), allocatable :: testOutput
-  integer :: iShiftAmount = 6
+  testStr = "Aol ylcvsbapvu dpss uva il alslcpzlk"
 
-  testStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  allocate(character(len(testStr)) :: testOutput)
-
-  call encrypt(testStr, iShiftAmount, testOutput)
-  print*, testOutput
-
-  testStr = testOutput
-  call decrypt(testStr, iShiftAmount, testOutput)
-  print*, testOutput
+  call solve(testStr, 26)
   
 end program main

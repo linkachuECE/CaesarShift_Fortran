@@ -1,7 +1,7 @@
 module CaesarShift
     implicit none
     private
-    public :: encrypt, decrypt
+    public :: encrypt, decrypt, solve
 
     contains
 
@@ -58,8 +58,8 @@ module CaesarShift
         integer :: i, iCurrASCII
         character(1) :: cCurrChar, cNewChar
         
-        print *, "Shifting: '", strInput, "' by ", iShiftAmount
-        print *, len(strInput)
+        ! print *, "Shifting: '", strInput, "' by ", iShiftAmount
+        ! print *, len(strInput)
 
 
         do i = 1, len(strInput)
@@ -75,7 +75,7 @@ module CaesarShift
             strOutput(i:i) = cNewChar
         end do
 
-        print *, "Shifted to: '", strOutput, "'"
+        ! print *, "Shifted to: '", strOutput, "'"
 
     end subroutine shift
 
@@ -96,5 +96,23 @@ module CaesarShift
         
         call shift(strInput, -iShiftAmount, strOutput)
     end subroutine decrypt
+
+    subroutine solve(strInput, iMaxShiftValue)
+        character(*), intent(in) :: strInput
+        integer, intent(in) :: iMaxShiftValue
+
+        integer :: iShiftValue
+
+        character(:), allocatable :: strOutput
+        allocate(character(len(strInput)) :: strOutput)
+
+        do iShiftValue = 1, iMaxShiftValue
+      
+            call decrypt(strInput, iShiftValue, strOutput)
+
+            write(*,fmt="(A,i2,A,A)") "Caesar ", iShiftValue, ": ", strOutput
+        end do
+
+    end subroutine
 
 end module

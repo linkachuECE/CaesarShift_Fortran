@@ -1,7 +1,8 @@
 program tester
     use, intrinsic :: iso_fortran_env, only : error_unit
     use testdrive, only : run_testsuite, new_testsuite, testsuite_type
-    use test_suite, only : collect_suite
+    use encrypt_test_suite, only : collect_encrypt_suite
+    use decrypt_test_suite, only : collect_decrypt_suite
     implicit none
     integer :: stat, is
     type(testsuite_type), allocatable :: testsuites(:)
@@ -10,7 +11,8 @@ program tester
     stat = 0
   
     testsuites = [ &
-      new_testsuite("Main suite", collect_suite) &
+      new_testsuite("Encrypt suite", collect_encrypt_suite), &
+      new_testsuite("Decrypt suite", collect_decrypt_suite) &
     ]
   
     do is = 1, size(testsuites)
