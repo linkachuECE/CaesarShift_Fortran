@@ -1,4 +1,4 @@
-# CaesarShift_Fortran2
+# CaesarShift_Fortran
 Fortran project for CS311.
 This project uses GNUFortran and the Fortran Package Manager
 
