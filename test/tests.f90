@@ -18,6 +18,7 @@ program tester
     do is = 1, size(testsuites)
       write(error_unit, fmt) "Testing:", testsuites(is)%name
       call run_testsuite(testsuites(is)%collect, error_unit, stat)
+      print *,""
     end do
   
     if (stat > 0) then
